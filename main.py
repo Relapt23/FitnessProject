@@ -1,11 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from models import User
 from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine
 
 app = FastAPI()
 
 metadata = MetaData()
-engine = create_engine("sqlite:///database.db")
+engine = create_engine("sqlite:///database.db",echo=True)
 users = Table(
     'users', metadata,
     Column('id', Integer, primary_key=True, autoincrement=True),
@@ -46,7 +46,7 @@ exceptions = Table(
     Column('user_id', Integer),
     Column('exercises_id', Integer),
 )
-
+metadata.drop_all(engine)
 metadata.create_all(engine)
 con = engine.connect()
 
