@@ -1,62 +1,35 @@
-from fastapi import FastAPI, HTTPException, Depends
-from models import User
-from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine
+from fastapi import FastAPI
+from models import Base
+from sqlalchemy import MetaData, create_engine, select
+from sqlalchemy.orm import sessionmaker, Session
+
+
 
 app = FastAPI()
-
 metadata = MetaData()
 engine = create_engine("sqlite:///database.db",echo=True)
-users = Table(
-    'users', metadata,
-    Column('id', Integer, primary_key=True, autoincrement=True),
-    Column('username', String),
-    Column('password', String),
-    Column('exceptions', String)
-)
+sess = sessionmaker(engine)
 
-exercises = Table(
-    'exercises', metadata,
-    Column('id', Integer, primary_key=True),
-    Column('type', String),
-    Column('title', String)
-)
+def create_tables():
+    engine.echo = False
+    Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
+    engine.echo = True
 
-muscle_types = Table(
-    'muscle_types', metadata,
-    Column('id', Integer, primary_key=True),
-    Column('title', String)
-)
+def insert_data():
+    with sess() as session:
+        raw_connection = session.get_bind().raw_connection()
+        raw_cursor = raw_connection.cursor()
+        raw_cursor.executescript(open("initial_data.sql").read())
+        session.commit()
+        
+create_tables()
+insert_data()
+# with sess() as session:
+#     query = select(Exercises)
+#     res = session.execute(query)
+#     exercises = res.scalars().all()
+#     print(f"{exercises=}")
+#     for elem in exercises:
+#         print(elem.title, elem.type)
 
-intensity = Table(
-    'intensity', metadata,
-    Column('id', Integer, primary_key=True),
-    Column('intensity', String)
-)
-
-exercises_preset = Table(
-    'exercises_preset', metadata,
-    Column('exercises_id', Integer, primary_key=True),
-    Column('intensity', String),
-    Column('periodicity', String)
-)
-
-exceptions = Table(
-    'exceptions', metadata,
-    Column('id', Integer, primary_key=True),
-    Column('user_id', Integer),
-    Column('exercises_id', Integer),
-)
-metadata.drop_all(engine)
-metadata.create_all(engine)
-con = engine.connect()
-
-# def get_user(user: User):
-#     s = users.select()
-#     rows = con.execute(s).fetchall()
-#     con.commit()
-#     for elem in rows:
-#         if elem[1] == user.username:
-#             raise HTTPException(status_code=418, detail="User in database")
-#     con.execute(users.insert().values(username=user.username, password=user.password))
-#     con.commit()
-#     return {"message":"Successful registration", "user": user.username}
