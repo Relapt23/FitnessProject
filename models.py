@@ -1,13 +1,17 @@
 from pydantic import BaseModel
 from sqlalchemy import Table, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import sessionmaker, Session, mapped_column, Mapped, DeclarativeBase
-from typing import Annotated
+from sqlalchemy.orm import sessionmaker, Session, mapped_column, Mapped, DeclarativeBase, relationship
+from typing import Annotated, Optional, List, Any
 
 intpk = Annotated[int, mapped_column(primary_key=True)]
 
 class User(BaseModel):
     username: str
     password: str
+
+class ChooseExercises(BaseModel):
+    muscles_types_id: List[int]
+
 
 class Base(DeclarativeBase):
     pass
@@ -18,9 +22,9 @@ class Users(Base):
     id: Mapped [int] = mapped_column(primary_key=True, autoincrement=True)
     username: Mapped[str]
     password: Mapped[str]
-    exceptions: Mapped[str]
+    # exceptions: Mapped[str]
 
-# Список упражнений
+# Список упражнений для ручного добавления
 class Exercises(Base):
     __tablename__ = "exercises"
     id: Mapped [intpk]
@@ -39,24 +43,40 @@ class Intensity(Base):
     id: Mapped [intpk]
     intensity: Mapped[str]
 
-# Выбранные упражнения
-class Exercises_preset(Base):
-    __tablename__ = "exercises_preset"
-    exercises_id: Mapped [int] = mapped_column(ForeignKey('exercises.id'),primary_key=True)
-    intensity: Mapped[int] = mapped_column(ForeignKey('intensity.id'), primary_key=True)
-    periodicity: Mapped[str]
 
-# Упражнения, исключенные пользователем
-class Exceptions(Base):
-    __tablename__ = "exceptions"
+# Комбинации групп мышц для составления тренировки
+class CombinationsMusclesTypes(Base):
+    __tablename__ = "combinations_muscles_types"
     id: Mapped [intpk]
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), primary_key=True)
-    exercises_id: Mapped[int] = mapped_column(ForeignKey('exercises.id'), primary_key=True)
+    title: Mapped[str]
+    intensity: Mapped[int] = mapped_column(ForeignKey('intensity.id'))
+    # workout = relationship('WorkoutList', secondary='training_plan', back_populates='combinations')
 
 
-# con = engine.connect()
-# con.execute(exercises.insert().values(
-# 
-# con.commit()
+# Перечень упражнений для комбинаций групп мышц
+class Workouts(Base):
+    __tablename__ = "workouts"
+    id: Mapped [intpk]
+    exercise: Mapped[str]
+    intensity: Mapped[int] = mapped_column(ForeignKey('intensity.id'))
+    periodicity: Mapped[str]
+    combination_id:  Mapped[int] = mapped_column(ForeignKey('combinations_muscles_types.id'))
+    training_number: Mapped[int]
+    # combinations = relationship('CombinationsMusclesTypes', secondary='training_plan', back_populates='workout') #мб убрать обратную связь
+
+# Итоговая программа тренировок
+class TrainingPlan(Base):
+    __tablename__ = "training_plan"
+    id: Mapped [intpk]
+    combination_id: Mapped[int] = mapped_column(ForeignKey('combinations_muscles_types.id'))
+    workout_list_id: Mapped[int] = mapped_column(ForeignKey('workouts.id'))
 
 
+
+# 1 Руки плечи   легкая
+
+# (1, 1)
+# (1, 2)
+
+# (1, Жим попой, 1, 3х15)
+# (2, жим жимом, 4х20)

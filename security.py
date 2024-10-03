@@ -1,8 +1,9 @@
 import jwt
 from fastapi.security import OAuth2PasswordBearer
 from models import User
-from main import users, con, Depends
-from main import HTTPException, users 
+# from main import users, con, Depends
+# from main import HTTPException, users
+from fastapi import HTTPException, Depends
 
 SECRET_KEY = 'qwerty'
 ALGORITHM = "HS256"
