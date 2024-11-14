@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Depends
-from models import Base, User, Users, ChooseExercises, Exercises
+from models import Base, User, Users, ChooseExercises, Exercises, UserRequest, CombinationsMusclesTypes, Workouts
 from sqlalchemy import MetaData, create_engine, select, insert
 from sqlalchemy.orm import sessionmaker, Session
 from security import create_jwt_token
+import random
 
 
 app = FastAPI()
@@ -66,3 +67,34 @@ async def choose_exercises(types_id: ChooseExercises):
 #         return user
 #     return {"Error": "User not found"}
 
+@app.put("/{user}/")
+async def enter_combination(user: str, request: UserRequest):
+    id_combination = 0
+    intensity_combination = 0
+    random_training_number = random.randint(1,3)
+    user_intensity = 0
+    ans = []
+    if request.intensity == "Легкая":
+        user_intensity = 1
+    elif request.intensity == "Средняя":
+        user_intensity = 2
+    else:
+        user_intensity = 3
+    with sess() as session:
+        query = select(CombinationsMusclesTypes)
+        res = session.execute(query)
+        combinations = res.scalars().all()
+        for combination in combinations:
+            if  request.combination == combination.title and combination.intensity == user_intensity:
+                id_combination = combination.id
+                intensity_combination = combination.intensity
+                break
+        query = select(Workouts)
+        res = session.execute(query)
+        training_list = res.scalars().all()
+        for ex in training_list:
+            if id_combination == ex.combination_id and intensity_combination == ex.intensity and random_training_number == ex.training_number:
+                ans.append({"title": ex.exercise, "per": ex.periodicity})
+        print(ans)
+        session.commit()
+    return ans

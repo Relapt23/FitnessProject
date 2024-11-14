@@ -12,6 +12,10 @@ class User(BaseModel):
 class ChooseExercises(BaseModel):
     muscles_types_id: List[int]
 
+class UserRequest(BaseModel):
+    combination: str
+    intensity: str
+
 
 class Base(DeclarativeBase):
     pass
@@ -73,10 +77,3 @@ class TrainingPlan(Base):
 
 
 
-# 1 Руки плечи   легкая
-
-# (1, 1)
-# (1, 2)
-
-# (1, Жим попой, 1, 3х15)
-# (2, жим жимом, 4х20)
