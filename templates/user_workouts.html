@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Программа тренировок</title>
+    <meta charset="utf-8" />>
+</head>
+<body>
+    {% for tren in workouts %}
+    <li>{{tren.title}} {{tren.per}} 
+    </li>
+    {% endfor %}
+</body>
+</html>

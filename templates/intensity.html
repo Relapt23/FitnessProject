@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор сложности</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>
+    {{intensity[0].title}}
+    </h1>
+    {% for elem in intensity %}
+    <li>
+    <a href="/combinations/intensity/workouts/{{elem.id}}">{{elem.intensity}}</a>
+    </li>
+    {% endfor %}
+</body>
+</html>

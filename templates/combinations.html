@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список комбинаций</title>
+    <meta charset="utf-8" />>
+</head>
+<body>
+    <ul>
+        {% for tren in training %}
+        <li>
+        <a href=/combinations/intensity/?id={{tren.ids | join('&id=')}}> {{tren.title}}, {{tren.intensity}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

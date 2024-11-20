@@ -13,7 +13,8 @@ class ChooseExercises(BaseModel):
     muscles_types_id: List[int]
 
 class UserRequest(BaseModel):
-    combination: str
+    id: int
+    title: str
     intensity: str
 
 
@@ -67,13 +68,6 @@ class Workouts(Base):
     combination_id:  Mapped[int] = mapped_column(ForeignKey('combinations_muscles_types.id'))
     training_number: Mapped[int]
     # combinations = relationship('CombinationsMusclesTypes', secondary='training_plan', back_populates='workout') #мб убрать обратную связь
-
-# Итоговая программа тренировок
-class TrainingPlan(Base):
-    __tablename__ = "training_plan"
-    id: Mapped [intpk]
-    combination_id: Mapped[int] = mapped_column(ForeignKey('combinations_muscles_types.id'))
-    workout_list_id: Mapped[int] = mapped_column(ForeignKey('workouts.id'))
 
 
 
