@@ -7,9 +7,11 @@ import random
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from typing import List
+from fastapi.staticfiles import StaticFiles
 
 templates = Jinja2Templates(directory="templates")
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 metadata = MetaData()
 engine = create_engine("sqlite:///database.db",echo=True)
 sess = sessionmaker(engine)
@@ -29,13 +31,6 @@ def insert_data():
         
 create_tables()
 insert_data()
-# with sess() as session:
-#     query = select(Exercises)
-#     res = session.execute(query)
-#     exercises = res.scalars().all()
-#     print(f"{exercises=}")
-#     for elem in exercises:
-#         print(elem.title, elem.type)
 
 @app.post('/login')
 async def login_user(user: User):
@@ -131,4 +126,16 @@ async def choose_intensity(request: Request, id: List[int] = Query([])):
                 else:
                     ans.append({"id": combination.id, "title": combination.title, "intensity": "Тяжелая"})
     
-    return templates.TemplateResponse(name="intensity.html", context={"request":request, "intensity": ans}) 
+    return templates.TemplateResponse(name="intensity.html", context={"request":request, "intensity": ans})
+
+@app.get("/auto", response_class=HTMLResponse)
+def auto(request: Request):
+    return templates.TemplateResponse(name="auto.html", context={"request":request, "intensity": 4})
+
+@app.get("/login55", response_class=HTMLResponse)
+async def login_get(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request, "error": None})
+
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
