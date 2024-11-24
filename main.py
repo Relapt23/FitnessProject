@@ -67,7 +67,6 @@ async def choose_exercises(types_id: ChooseExercises):
 
 @app.get("/combinations/intensity/workouts/{id}", response_class=HTMLResponse)
 async def enter_combination(request: Request, id: int):
-    print(id)
     workouts = get_workouts(id)
     return templates.TemplateResponse(name="user_workouts.html", context={"request":request, "workouts": workouts}) 
 def get_workouts(combination_id: int):
@@ -85,8 +84,6 @@ def get_workouts(combination_id: int):
 
 @app.get("/combinations/", response_class=HTMLResponse)
 async def choose_combination(request: Request):
-    combinations_list = []
-    array = []
     combinations_list = []
     array = []
     with sess() as session:
