@@ -35,6 +35,7 @@ class Exercises(Base):
     id: Mapped [intpk]
     type: Mapped[int] = mapped_column(ForeignKey('muscle_types.id'))
     title: Mapped[str]
+    youtube: Mapped[str]
 
 # Группы мышц
 class Muscle_types(Base):

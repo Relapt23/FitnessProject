@@ -9,52 +9,52 @@ INSERT INTO intensity (intensity) VALUES ("Легкая");
 INSERT INTO intensity (intensity) VALUES ("Средняя");
 INSERT INTO intensity (intensity) VALUES ("Тяжелая");
 
-INSERT INTO exercises (title, type) VALUES ("Тяга верхнего блока", 1);
-INSERT INTO exercises (title, type) VALUES ("Подтягивания", 1);
-INSERT INTO exercises (title, type) VALUES ("Пуловер", 1);
-INSERT INTO exercises (title, type) VALUES ("Тяга нижнего блока", 1);
-INSERT INTO exercises (title, type) VALUES ("Становая тяга", 1);
-INSERT INTO exercises (title, type) VALUES ("Тяга Т-грифа", 1);
-INSERT INTO exercises (title, type) VALUES ("Тяга штанги к поясу", 1);
-INSERT INTO exercises (title, type) VALUES ("Гиперэксензия", 1);
-INSERT INTO exercises (title, type) VALUES ("Good Morning", 1);
-INSERT INTO exercises (title, type) VALUES ("Приседания со штангой", 2);
-INSERT INTO exercises (title, type) VALUES ("Болгарские выпады", 2);
-INSERT INTO exercises (title, type) VALUES ("Фронтальный присед", 2);
-INSERT INTO exercises (title, type) VALUES ("Разгибание ног в тренажере", 2);
-INSERT INTO exercises (title, type) VALUES ("Сгибание ног в тренажере", 2);
-INSERT INTO exercises (title, type) VALUES ("Выпады с гантелями", 2);
-INSERT INTO exercises (title, type) VALUES ("Румынская тяга", 2);
-INSERT INTO exercises (title, type) VALUES ("Махи ногой с манжетой", 2);
-INSERT INTO exercises (title, type) VALUES ("Ягодичный мостик", 2);
-INSERT INTO exercises (title, type) VALUES ("Подъем ног на тренажере сидя", 2);
-INSERT INTO exercises (title, type) VALUES ("Подъем на носки", 2);
-INSERT INTO exercises (title, type) VALUES ("Армейский жим гантелями сидя", 4);
-INSERT INTO exercises (title, type) VALUES ("Тяга штанги к подбородку", 4);
-INSERT INTO exercises (title, type) VALUES ("Жим штанги стоя", 4);
-INSERT INTO exercises (title, type) VALUES ("Разведение гантелей в наклоне", 4);
-INSERT INTO exercises (title, type) VALUES ("Отведение гантелей в стороны", 4);
-INSERT INTO exercises (title, type) VALUES ("Подъем гантелей перед собой", 4);
-INSERT INTO exercises (title, type) VALUES ("Жим Арнольда", 4);
-INSERT INTO exercises (title, type) VALUES ("Жим штанги лежа", 5);
-INSERT INTO exercises (title, type) VALUES ("Жим гантелей лежа", 5);
-INSERT INTO exercises (title, type) VALUES ("Вертикальный жим", 5);
-INSERT INTO exercises (title, type) VALUES ("Разводка гантелей в стороны лежа", 5);
-INSERT INTO exercises (title, type) VALUES ("Жим сидя в тренажере", 5);
-INSERT INTO exercises (title, type) VALUES ("Отжимания на брусьях", 5);
-INSERT INTO exercises (title, type) VALUES ("Сведение рук в кроссовере", 5);
-INSERT INTO exercises (title, type) VALUES ("Подъем штанги на бицепс стоя", 3);
-INSERT INTO exercises (title, type) VALUES ("Подъем гантелей с супинацией", 3);
-INSERT INTO exercises (title, type) VALUES ("Подъем гантелей сидя с упором на бедро", 3);
-INSERT INTO exercises (title, type) VALUES ("Молотки", 3);
-INSERT INTO exercises (title, type) VALUES ("Французский жим", 3);
-INSERT INTO exercises (title, type) VALUES ("Жим лежа узким хватом", 3);
-INSERT INTO exercises (title, type) VALUES ("Разгибание руки с гантелью из-за головы", 3);
-INSERT INTO exercises (title, type) VALUES ("Разгибание рук в верхнем блоке", 3);
-INSERT INTO exercises (title, type) VALUES ("Велосипед", 6);
-INSERT INTO exercises (title, type) VALUES ("Ножницы", 6);
-INSERT INTO exercises (title, type) VALUES ("Скручивания", 6);
-INSERT INTO exercises (title, type) VALUES ("Планка", 6);
+INSERT INTO exercises (title, type, youtube) VALUES ("Тяга верхнего блока", 1, "https://www.youtube.com/watch?v=GTs3xqB_ZgQ&t=1s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подтягивания", 1, "https://www.youtube.com/watch?v=Smb8BTBBomc&t=5s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Пуловер", 1, "https://www.youtube.com/watch?v=KrVV7VzTQ2A");
+INSERT INTO exercises (title, type, youtube) VALUES ("Тяга нижнего блока", 1, "https://www.youtube.com/watch?v=hUV6XDtNTLU");
+INSERT INTO exercises (title, type, youtube) VALUES ("Становая тяга", 1, "https://www.youtube.com/watch?v=sZcg4gbzOWw");
+INSERT INTO exercises (title, type, youtube) VALUES ("Тяга Т-грифа", 1, "https://www.youtube.com/watch?v=tcjwEB77DWc");
+INSERT INTO exercises (title, type, youtube) VALUES ("Тяга штанги к поясу", 1, "https://www.youtube.com/watch?v=D3E6BEuROfM");
+INSERT INTO exercises (title, type, youtube) VALUES ("Гиперэкстензия", 1, "https://www.youtube.com/watch?v=k76TkJCe8Xs");
+INSERT INTO exercises (title, type, youtube) VALUES ("Good Morning", 1, "https://www.youtube.com/watch?v=dNL4AohcUaU&t=1s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Приседания со штангой", 2, "https://www.youtube.com/watch?v=Cj7dKDbFA94&t=1s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Болгарские выпады", 2, "https://www.youtube.com/watch?v=6fOOCDSV04k");
+INSERT INTO exercises (title, type, youtube) VALUES ("Фронтальный присед", 2, "https://www.youtube.com/watch?v=CPYpByMrjVU");
+INSERT INTO exercises (title, type, youtube) VALUES ("Разгибание ног в тренажере", 2, "https://www.youtube.com/watch?v=j81VHO7YzOM");
+INSERT INTO exercises (title, type, youtube) VALUES ("Сгибание ног в тренажере", 2, "https://www.youtube.com/watch?v=EGmK6J_IAFc");
+INSERT INTO exercises (title, type, youtube) VALUES ("Выпады с гантелями", 2, "https://www.youtube.com/watch?v=vNrkKOiksCs");
+INSERT INTO exercises (title, type, youtube) VALUES ("Румынская тяга", 2, "https://www.youtube.com/watch?v=z2SeYAR0NVo");
+INSERT INTO exercises (title, type, youtube) VALUES ("Махи ногой с манжетой", 2, "https://www.youtube.com/watch?v=0fA10kxGwZA");
+INSERT INTO exercises (title, type, youtube) VALUES ("Ягодичный мостик", 2, "https://www.youtube.com/watch?v=c-Zi3jSpZj4");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим ногами", 2, "https://www.youtube.com/watch?v=vWc9aKZHETo");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подъем на носки", 2, "https://www.youtube.com/watch?v=zUShXqdXJbY");
+INSERT INTO exercises (title, type, youtube) VALUES ("Армейский жим гантелями сидя", 4, "https://www.youtube.com/watch?v=gVoVKUmyXVQ");
+INSERT INTO exercises (title, type, youtube) VALUES ("Тяга штанги к подбородку", 4, "https://www.youtube.com/watch?v=vNsBvmOlwzc");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим штанги стоя", 4, "https://www.youtube.com/watch?v=XsqUjjgYPS8&t=114s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Разведение гантелей в наклоне", 4, "https://www.youtube.com/watch?v=bXJ9aM-NCpE");
+INSERT INTO exercises (title, type, youtube) VALUES ("Отведение гантелей в стороны", 4, "https://www.youtube.com/watch?v=Q3j7XYxrJtk");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подъем гантелей перед собой", 4, "https://www.youtube.com/watch?v=-RvIJ-h5xNE");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим Арнольда", 4, "https://www.youtube.com/watch?v=DYh7wU0OjKg");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим штанги лежа", 5, "https://www.youtube.com/watch?v=Jb2bMaxqnXI");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим гантелей лежа", 5, "https://www.youtube.com/watch?v=1ZoLTYHwc8k");
+INSERT INTO exercises (title, type, youtube) VALUES ("Вертикальный жим", 5, "https://www.youtube.com/watch?v=pBGDBfXHlFs");
+INSERT INTO exercises (title, type, youtube) VALUES ("Разводка гантелей в стороны лежа", 5, "https://www.youtube.com/watch?v=fWfTbyXe7Ds");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим сидя в тренажере", 5, "https://www.youtube.com/watch?v=WhDbSUtzRK8");
+INSERT INTO exercises (title, type, youtube) VALUES ("Отжимания на брусьях", 5, "https://www.youtube.com/watch?v=XSmkKGKk-IA&t=119s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Сведение рук в кроссовере", 5, "https://www.youtube.com/watch?v=G7YF50OMuUw");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подъем штанги на бицепс стоя", 3, "https://www.youtube.com/watch?v=x6r8lIRaOdQ");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подъем гантелей с супинацией", 3, "https://www.youtube.com/watch?v=eglMHvUpR7k");
+INSERT INTO exercises (title, type, youtube) VALUES ("Подъем гантелей сидя с упором на бедро", 3, "https://www.youtube.com/watch?v=ZfmfHB2n0xE");
+INSERT INTO exercises (title, type, youtube) VALUES ("Молотки", 3, "https://www.youtube.com/watch?v=k6VRiS8AY2o");
+INSERT INTO exercises (title, type, youtube) VALUES ("Французский жим", 3, "https://www.youtube.com/watch?v=PxSg9Iy98q0&t=27s");
+INSERT INTO exercises (title, type, youtube) VALUES ("Жим лежа узким хватом", 3, "https://www.youtube.com/watch?v=IRUu6Z5rcSo");
+INSERT INTO exercises (title, type, youtube) VALUES ("Разгибание руки с гантелью из-за головы", 3, "https://www.youtube.com/watch?v=G7TbiM0arjQ");
+INSERT INTO exercises (title, type, youtube) VALUES ("Разгибание рук в верхнем блоке", 3, "https://www.youtube.com/watch?v=1WBglMPCRRE");
+INSERT INTO exercises (title, type, youtube) VALUES ("Велосипед", 6, "https://www.youtube.com/watch?v=rCi4S_Pd4z4");
+INSERT INTO exercises (title, type, youtube) VALUES ("Ножницы", 6, "https://www.youtube.com/watch?v=8W_VCSLL05Y");
+INSERT INTO exercises (title, type, youtube) VALUES ("Скручивания", 6, "https://www.youtube.com/watch?v=QLVE2eGRMy4");
+INSERT INTO exercises (title, type, youtube) VALUES ("Планка", 6, "https://www.youtube.com/watch?v=0JtBS11DGDk");
 
 
 INSERT INTO combinations_muscles_types (title, intensity) VALUES ("Спина и бицепс", 1);
@@ -616,7 +616,7 @@ INSERT INTO workouts (exercise, periodicity, training_number, combination_id, in
 
 ('Фронтальный присед', '3x12', 3, 16, 1),
 ('Сгибание ног в тренажере', '3x12', 3, 16, 1),
-('Подъем ног на тренажере сидя', '4x12', 3, 16, 1),
+('Жим ногами', '4x12', 3, 16, 1),
 ('Тяга штанги к подбородку', '4x12', 3, 16, 1),
 ('Подъем гантелей перед собой', '3x12', 3, 16, 1),
 ('Французский жим', '3x12', 3, 16, 1),
@@ -662,7 +662,7 @@ INSERT INTO workouts (exercise, periodicity, training_number, combination_id, in
 
 ('Выпады с гантелями', '4x12', 3, 18, 3),
 ('Ягодичный мостик', '5x12', 3, 18, 3),
-('Подъем ног на тренажере сидя', '3x12', 3, 18, 3),
+('Жим ногами', '3x12', 3, 18, 3),
 ('Разведение гантелей в наклоне', '4x12', 3, 18, 3),
 ('Французский жим', '4x8', 3, 18, 3),
 ('Подъем гантелей с супинацией', '3x8', 3, 18, 3),
