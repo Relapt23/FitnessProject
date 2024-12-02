@@ -7,14 +7,53 @@
     <!-- Заголовок -->
     <h1 class="text-center mb-4">Программа тренировок</h1>
     
-    <!-- Список тренировок с выравниванием по левому краю и уменьшением блоков -->
+    <!-- Список тренировок -->
     <ul class="list-group">
         {% for tren in workouts %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span class="fw-bold me-3">{{ tren.title }}</span>
-            <span class="text-end" style="width: 120px;">{{ tren.per }}</span>
+        <li class="list-group-item d-flex flex-column justify-content-between align-items-start workout-block" data-video="{{ tren.youtube }}">
+            <div class="d-flex w-100 justify-content-between">
+                <span class="fw-bold me-3">{{ tren.title }}</span>
+                <span class="text-end" style="width: 120px;">{{ tren.per }}</span>
+            </div>
         </li>
         {% endfor %}
     </ul>
+
+    <!-- Секция для видео -->
+    <div id="video-section" class="mt-5 d-none">
+        <div class="d-flex justify-content-center">
+            <iframe id="video-player" width="640" height="360" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
 </div>
+
+<!-- Скрипт для отображения плеера -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const workoutBlocks = document.querySelectorAll('.workout-block');
+        const videoSection = document.getElementById('video-section');
+        const videoPlayer = document.getElementById('video-player');
+
+        workoutBlocks.forEach(block => {
+            block.addEventListener('click', function () {
+                // Извлекаем ссылку на видео из атрибута
+                const videoUrl = block.getAttribute('data-video');
+                
+                if (videoUrl) {
+                    const urlParams = new URLSearchParams(new URL(videoUrl).search);
+                    const videoId = urlParams.get('v');
+
+                    if (videoId) {
+                        // Устанавливаем ссылку в плеер
+                        videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+                        
+                        // Показываем секцию для видео
+                        videoSection.classList.remove('d-none');
+                    }
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
+

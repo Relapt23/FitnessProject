@@ -29,7 +29,7 @@ class Users(Base):
     password: Mapped[str]
     # exceptions: Mapped[str]
 
-# Список упражнений для ручного добавления
+# Список упражнений
 class Exercises(Base):
     __tablename__ = "exercises"
     id: Mapped [intpk]
@@ -56,7 +56,6 @@ class CombinationsMusclesTypes(Base):
     id: Mapped [intpk]
     title: Mapped[str]
     intensity: Mapped[int] = mapped_column(ForeignKey('intensity.id'))
-    # workout = relationship('WorkoutList', secondary='training_plan', back_populates='combinations')
 
 
 # Перечень упражнений для комбинаций групп мышц
@@ -68,7 +67,6 @@ class Workouts(Base):
     periodicity: Mapped[str]
     combination_id:  Mapped[int] = mapped_column(ForeignKey('combinations_muscles_types.id'))
     training_number: Mapped[int]
-    # combinations = relationship('CombinationsMusclesTypes', secondary='training_plan', back_populates='workout') #мб убрать обратную связь
 
 
 

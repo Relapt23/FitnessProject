@@ -2,7 +2,6 @@ from fastapi import FastAPI, Depends, Request, Query
 from models import Base, User, Users, ChooseExercises, Exercises, UserRequest, CombinationsMusclesTypes, Workouts
 from sqlalchemy import MetaData, create_engine, select, insert
 from sqlalchemy.orm import sessionmaker, Session
-from security import create_jwt_token
 import random
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -57,20 +56,13 @@ async def choose_exercises(types_id: ChooseExercises):
                 print(row)
 
 
-# @app.get("/about_me")
-# async def user_info(current_user: str = Depends(get_user_from_token)):
-#     user = get_user(current_user)
-#     print(user)
-#     if user:
-#         return user
-#     return {"Error": "User not found"}
-
 @app.get("/combinations/intensity/workouts/{id}", response_class=HTMLResponse)
 async def enter_combination(request: Request, id: int):
     workouts = get_workouts(id)
     return templates.TemplateResponse(name="user_workouts.html", context={"request":request, "workouts": workouts}) 
 def get_workouts(combination_id: int):
     random_training_number = random.randint(1,3)
+    array = []
     ans = []
     with sess() as session:
         query = select(Workouts)
@@ -78,7 +70,14 @@ def get_workouts(combination_id: int):
         training_list = res.scalars().all()
         for ex in training_list:
             if combination_id == ex.combination_id and random_training_number == ex.training_number:
-                ans.append({"title": ex.exercise, "per": ex.periodicity})
+                array.append({"title": ex.exercise, "per": ex.periodicity})
+        query2 = select(Exercises)
+        res2 = session.execute(query2)
+        exercises_list = res2.scalars().all()
+        for exercise in exercises_list:
+            for elem in array:
+                if elem["title"] == exercise.title and exercise.youtube not in ans:
+                    ans.append({"title": elem["title"], "per": elem["per"], "youtube": exercise.youtube})
         session.commit()
     return ans
 
@@ -125,14 +124,6 @@ async def choose_intensity(request: Request, id: List[int] = Query([])):
     
     return templates.TemplateResponse(name="intensity.html", context={"request":request, "intensity": ans})
 
-@app.get("/auto", response_class=HTMLResponse)
-def auto(request: Request):
-    return templates.TemplateResponse(name="auto.html", context={"request":request, "intensity": 4})
-
-@app.get("/login55", response_class=HTMLResponse)
-async def login_get(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request, "error": None})
-
 @app.get("/")
 async def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("home.html", {"request": request})

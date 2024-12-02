@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Добро пожаловать! Давай выберем тренировку вместе!</h1>
+
+    <!-- Кнопка перехода на страницу с комбинациями -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="http://127.0.0.1:8000/combinations/" class="btn btn-primary btn-lg">
+            Выбрать комбинации тренировок
+        </a>
+    </div>
+</div>
+{% endblock %}
