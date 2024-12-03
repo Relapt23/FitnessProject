@@ -31,31 +31,6 @@ def insert_data():
 create_tables()
 insert_data()
 
-@app.post('/login')
-async def login_user(user: User):
-    with sess() as session:
-        query = select(Users)
-        res = session.execute(query)
-        users = res.scalars().all()
-        for person in users:
-            if person.username == user.username and person.password == user.password:
-                return {"access_token": create_jwt_token({"sub": user.username}), "token_type": "bearer"}
-        session.execute(insert(Users), {"username": user.username, "password": user.password})
-                # query = select(Users)
-                # res = session.execute(query)
-                # users = res.scalars().all()
-        session.commit()
-        return {"message": "Successful registration"}
-    
-@app.post("/user")
-async def choose_exercises(types_id: ChooseExercises):
-    with sess() as session:
-        for id in types_id.muscles_types_id:
-            stmt = select(Exercises.title).where(Exercises.type == id)
-            for row in session.execute(stmt):
-                print(row)
-
-
 @app.get("/combinations/intensity/workouts/{id}", response_class=HTMLResponse)
 async def enter_combination(request: Request, id: int):
     workouts = get_workouts(id)
