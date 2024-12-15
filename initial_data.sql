@@ -9,6 +9,7 @@ INSERT INTO intensity (intensity) VALUES ("Легкая");
 INSERT INTO intensity (intensity) VALUES ("Средняя");
 INSERT INTO intensity (intensity) VALUES ("Тяжелая");
 
+
 INSERT INTO exercises (title, type, youtube) VALUES ("Тяга верхнего блока", 1, "https://www.youtube.com/watch?v=GTs3xqB_ZgQ&t=1s");
 INSERT INTO exercises (title, type, youtube) VALUES ("Подтягивания", 1, "https://www.youtube.com/watch?v=Smb8BTBBomc&t=5s");
 INSERT INTO exercises (title, type, youtube) VALUES ("Пуловер", 1, "https://www.youtube.com/watch?v=KrVV7VzTQ2A");
